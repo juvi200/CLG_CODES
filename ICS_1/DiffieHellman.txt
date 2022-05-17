@@ -1,0 +1,66 @@
+import java.util.*;
+
+class DiffieHellman
+{
+	public static void main(String args[])
+	{
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter modulo(p)");
+		int p=sc.nextInt();
+		System.out.println("Enter primitive root of "+p);
+		int g=sc.nextInt();
+		System.out.println("Choose 1st secret no(Alice)");
+		int a=sc.nextInt();
+		System.out.println("Choose 2nd secret no(BOB)");
+		int b=sc.nextInt();
+		int A = (int)Math.pow(g,a)%p;
+		int B = (int)Math.pow(g,b)%p;
+		int S_A = (int)Math.pow(B,a)%p;
+		int S_B =(int)Math.pow(A,b)%p;
+		if(S_A==S_B)
+		{
+			System.out.println("ALice and Bob can communicate with each other!!!");
+			System.out.println("They share a secret no = "+S_A);
+		}
+		else
+		{
+			System.out.println("ALice and Bob cannot communicate with each other!!!");
+		}
+	}
+}
+
+
+/*********************************************OUTPUT*********************************************
+
+uzma@Uzma-Lenovo:~$ cd /home/uzma/Downloads/LPIII/ICS/DiffieHellman
+uzma@Uzma-Lenovo:~/Downloads/LPIII/ICS/DiffieHellman$ javac DiffieHellman.java
+uzma@Uzma-Lenovo:~/Downloads/LPIII/ICS/DiffieHellman$ java DiffieHellman
+
+Enter modulo(p)
+17
+Enter primitive root of 17
+7
+Choose 1st secret no(Alice)
+5
+Choose 2nd secret no(BOB)
+3
+ALice and Bob can communicate with each other!!!
+They share a secret no = 5
+
+
+uzma@Uzma-Lenovo:~/Downloads/LPIII/ICS/DiffieHellman$ javac DiffieHellman.java
+uzma@Uzma-Lenovo:~/Downloads/LPIII/ICS/DiffieHellman$ java DiffieHellman
+
+Enter modulo(p)
+12
+Enter primitive root of 12
+42
+Choose 1st secret no(Alice)
+4
+Choose 2nd secret no(BOB)
+22
+ALice and Bob cannot communicate with each other!!!
+
+*/
+
+
